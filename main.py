@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+import argparse
+import pyperclip
 
 # ASCII characters to use for different intensity values
 ASCII_CHARS = '@%#*+=-:. '
@@ -95,7 +97,20 @@ class AsciiArt:
         # split the ascii_str into lines based on the width of the image
         return '\n'.join([ascii_str[i:i + image.width] for i in range(0, len(ascii_str), image.width)])
 
-# Example Usage
-# image_processor = ImageProcessor('sample.jpg')
-# ascii_art = AsciiArt(image_processor)
-# print(ascii_art.generate_ascii_art())
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Convert an image to ASCII art.")
+    parser.add_argument("-i", "--image", type=str, required=True, help="Path to the image that will be used for the ASCII art.")
+    parser.add_argument("-c", "--copy", action="store_true", help="Copy the ASCII art to the clipboard after generation.")
+
+    args = parser.parse_args()
+
+    image_processor = ImageProcessor(args.image)
+    ascii_art_instance = AsciiArt(image_processor)
+    ascii_art = ascii_art_instance.generate_ascii_art()
+
+    print(ascii_art)
+
+    if args.copy:
+        pyperclip.copy(ascii_art)
+        print("ASCII art copied to clipboard.")
