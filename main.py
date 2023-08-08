@@ -101,11 +101,12 @@ class AsciiArt:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert an image to ASCII art.")
     parser.add_argument("-i", "--image", type=str, required=True, help="Path to the image that will be used for the ASCII art.")
+    parser.add_argument("-d", "--detail", type=int, default=1, help="Factor to scale the detail of the output ASCII art. Default is 1.")
     parser.add_argument("-c", "--copy", action="store_true", help="Copy the ASCII art to the clipboard after generation.")
 
     args = parser.parse_args()
 
-    image_processor = ImageProcessor(args.image)
+    image_processor = ImageProcessor(args.image, detail_size=args.detail)
     ascii_art_instance = AsciiArt(image_processor)
     ascii_art = ascii_art_instance.generate_ascii_art()
 
