@@ -7,5 +7,5 @@ pygame==2.5.0
 pyperclip==1.8.2
 requests==2.31.0
 tqdm==4.65.0
-urllib3==2.0.4
+urllib3==2.0.6
 webuiapi==0.9.5
