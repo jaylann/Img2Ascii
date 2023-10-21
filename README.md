@@ -1,6 +1,6 @@
 # ASCII Art Generator
 
-ASCII Art Generator is a Python-based project which converts images to ASCII art. It uses the Python Imaging Library (PIL) and numpy to achieve this. 
+ASCII Art Generator is a Python-based project that converts images to ASCII art. It uses the Python Imaging Library (PIL), numpy, and pyperclip to achieve this.
 
 ## Prerequisites
 
@@ -8,15 +8,25 @@ Make sure you have installed the following Python libraries:
 
 1. Python Imaging Library (PIL)
 2. numpy
+3. pyperclip
 
 You can install them with the following commands:
 
 ```bash
 pip install pillow
 pip install numpy
+pip install pyperclip
+```
+
+Or you can install them using the `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ## Usage
+
+### As a Library
 
 First, import the necessary classes from the script:
 
@@ -24,37 +34,32 @@ First, import the necessary classes from the script:
 from ascii_art import ImageProcessor, AsciiArt
 ```
 
-Then, create an instance of the `ImageProcessor` class with the path to your image file and your desired detail size as arguments. The detail size affects the level of detail of the resulting ASCII art. A higher value will result in more detail:
+Then, follow the example code to create instances of `ImageProcessor` and `AsciiArt`, and generate your ASCII art.
 
-```python
-image_processor = ImageProcessor('path_to_your_image.jpg', detail_size=2)
+### As a Command-Line Tool
+
+You can also use the script directly from the command line. Here's how you can do it:
+
+```bash
+python ascii_art.py -i path_to_your_image.jpg -d 2
 ```
 
-Next, create an instance of the `AsciiArt` class with your `ImageProcessor` instance as an argument:
+Options:
 
-```python
-ascii_art = AsciiArt(image_processor)
-```
-
-Finally, call the `generate_ascii_art` method on your `AsciiArt` instance to generate your ASCII art:
-
-```python
-print(ascii_art.generate_ascii_art())
-```
-
-This will print the ASCII art representation of your image to the console.
-
+- `-i, --image`: Path to the image that will be used for the ASCII art (required).
+- `-d, --detail`: Factor to scale the detail of the output ASCII art. Default is 1.
+- `-c, --copy`: Copy the ASCII art to the clipboard after generation.
 
 ## Example
 
-Here is an example of how to use the code:
+Here is an example of how to use the code as a library:
 
 ```python
 from ascii_art import ImageProcessor, AsciiArt
 
 image_processor = ImageProcessor('sample.jpg', detail_size=2)
-ascii_art = AsciiArt(image_processor)
-print(ascii_art.generate_ascii_art())
+ascii_art_instance = AsciiArt(image_processor)
+print(ascii_art_instance.generate_ascii_art())
 ```
 
 ## License
