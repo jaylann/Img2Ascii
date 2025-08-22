@@ -65,3 +65,9 @@ print(ascii_art_instance.generate_ascii_art())
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://lanfermann.dev">Justin Lanfermann</a>
+</p>
